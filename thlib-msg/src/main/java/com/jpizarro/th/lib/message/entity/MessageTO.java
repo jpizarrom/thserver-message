@@ -4,8 +4,8 @@ import java.io.Serializable;
 
 public class MessageTO implements Serializable{
 	private long messageId;
-	private String senderLogin;
-	private String receiverLogin;
+	private long senderLogin;
+	private long receiverLogin;
 	private String messageBody;
 	private int type;
 	
@@ -25,20 +25,20 @@ public class MessageTO implements Serializable{
 //		this.messageBody = message.getMessageBody();	
 //	}
 	
-	public MessageTO(String senderLogin, String receiverLogin,
+	public MessageTO(long senderLogin, long receiverLogin,
 			String messageBody, int type) {
 		super();
-		this.senderLogin = senderLogin;
-		this.receiverLogin = receiverLogin;
+		this.setSenderLogin(senderLogin);
+		this.setReceiverLogin(receiverLogin);
 		this.messageBody = messageBody;
 		this.type = type;
 	}
-	public MessageTO(long messageId, String senderLogin, String receiverLogin,
+	public MessageTO(long messageId, long senderLogin, long receiverLogin,
 			String messageBody, int type) {
 		super();
 		this.messageId = messageId;
-		this.senderLogin = senderLogin;
-		this.receiverLogin = receiverLogin;
+		this.setSenderLogin(senderLogin);
+		this.setReceiverLogin(receiverLogin);
 		this.messageBody = messageBody;
 		this.type = type;
 	}
@@ -47,18 +47,6 @@ public class MessageTO implements Serializable{
 	}
 	public void setMessageId(long messageId) {
 		this.messageId = messageId;
-	}
-	public String getSenderLogin() {
-		return senderLogin;
-	}
-	public void setSenderLogin(String senderLogin) {
-		this.senderLogin = senderLogin;
-	}
-	public String getReceiverLogin() {
-		return receiverLogin;
-	}
-	public void setReceiverLogin(String receiverLogin) {
-		this.receiverLogin = receiverLogin;
 	}
 	public String getMessageBody() {
 		return messageBody;
@@ -71,6 +59,18 @@ public class MessageTO implements Serializable{
 	}
 	public void setType(int type) {
 		this.type = type;
+	}
+	public void setSenderLogin(long senderLogin) {
+		this.senderLogin = senderLogin;
+	}
+	public long getSenderLogin() {
+		return senderLogin;
+	}
+	public void setReceiverLogin(long receiverLogin) {
+		this.receiverLogin = receiverLogin;
+	}
+	public long getReceiverLogin() {
+		return receiverLogin;
 	}
 	
 }

@@ -18,20 +18,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.wicketstuff.annotation.scan.AnnotatedMountScanner;
 
+import com.jpizarro.th.server.message.model.service.MessageService;
+
 /**
  * Application object for your web application. If you want to run this application without deploying, run the Start class.
  */
 @Component
 public class WicketApplication extends WebApplication
 { 
-//	@Autowired
-//	private UserServiceAuthenticationManager userServiceAuthenticationManager;
 	
-//	@Autowired
-//	private UserService userService;
-	
-//	@Autowired
-//	private GameService gameService;
+	@Autowired
+	private MessageService messageService;
 		
     /**
      * Constructor
@@ -93,5 +90,9 @@ public class WicketApplication extends WebApplication
 	public static WicketApplication get() {
         return (WicketApplication) Application.get();
     }
+
+	public MessageService getMessageService() {
+		return messageService;
+	}
 
 }
