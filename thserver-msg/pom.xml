@@ -198,6 +198,17 @@
 			<artifactId>spring-security-web</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
+		
+		<dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-oxm</artifactId>
+            <version>${spring.version}</version>
+		</dependency>
+		<dependency>
+		  	<groupId>org.codehaus.jackson</groupId>
+		  	<artifactId>jackson-mapper-asl</artifactId>
+		  	<version>1.6.4</version>
+		</dependency>
 
 		<dependency>
 			<groupId>javassist</groupId>
@@ -490,7 +501,8 @@
 							<sources>
 								<!--<source>thlib</source> -->
 								<source>../../generic/thlib-generic/src/main/java/</source>
-                                <source>../../msg/thlib-msg/src/main/java/</source>
+<!--                                <source>../../user/thlib-user/src/main/java/</source>-->
+                                <source>../../team/thlib-team/src/main/java/</source>
 							</sources>
 						</configuration>
 					</execution>

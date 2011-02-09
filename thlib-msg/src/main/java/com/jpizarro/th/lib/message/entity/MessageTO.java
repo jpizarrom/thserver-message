@@ -33,6 +33,9 @@ public class MessageTO implements Serializable{
 		this.messageBody = messageBody;
 		this.type = type;
 	}
+	public MessageTO() {
+		super();
+	}
 	public MessageTO(long messageId, long senderLogin, long receiverLogin,
 			String messageBody, int type) {
 		super();
