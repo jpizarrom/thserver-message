@@ -1,13 +1,17 @@
 package com.jpizarro.th.server.message.model.entity;
 
 import java.util.Calendar;
+import java.util.HashSet;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Temporal;
@@ -19,7 +23,8 @@ public class Message {
 	private String messageBody;
 	private Calendar date;
 	private User sender = null;
-	private User receiver = null;
+//	private User receiver = null;
+	private Set<User> receivers = new HashSet<User>();
 	private boolean readed = false;
 	private int type;
 	
@@ -34,7 +39,7 @@ public class Message {
 		this.messageBody = messageBody;
 		this.date = date;
 		this.sender = sender;
-		this.receiver = receiver;
+		this.receivers.add(receiver);
 		this.readed = readed;
 		this.type = type;
 	}
@@ -75,14 +80,15 @@ public class Message {
 		this.sender = sender;
 	}
 	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "receiverId")
-	public User getReceiver() {
-		return receiver;
+	@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})	
+	public Set<User> getReceivers() {
+		return receivers;
 	}
-	public void setReceiver(User receiver) {
-		this.receiver = receiver;
+
+	public void setReceivers(Set<User> receivers) {
+		this.receivers = receivers;
 	}
+
 	public boolean isReaded() {
 		return readed;
 	}
@@ -100,7 +106,7 @@ public class Message {
 	public String toString() {
 		return "Message [messageId=" + messageId +", date=" + date + ", messageBody="
 				+ messageBody + ", readed="
-				+ readed + ", receiver=" + receiver + ", sender=" + sender
+				+ readed + ", sender=" + sender
 				+ ", type=" + type + "]";
 	}
 	
