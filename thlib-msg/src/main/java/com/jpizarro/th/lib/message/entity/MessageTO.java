@@ -1,11 +1,16 @@
 package com.jpizarro.th.lib.message.entity;
 
 import java.io.Serializable;
+import java.util.Set;
 
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+
+@XStreamAlias("message")
 public class MessageTO implements Serializable{
 	private long messageId;
 	private long senderLogin;
 	private long receiverLogin;
+	Set<UserTO> receivers;
 	private String messageBody;
 	private int type;
 	
@@ -25,11 +30,12 @@ public class MessageTO implements Serializable{
 //		this.messageBody = message.getMessageBody();	
 //	}
 	
-	public MessageTO(long senderLogin, long receiverLogin,
+	public MessageTO(long senderLogin, Set<UserTO> receivers, 
 			String messageBody, int type) {
 		super();
 		this.setSenderLogin(senderLogin);
-		this.setReceiverLogin(receiverLogin);
+//		this.setReceiverLogin(receiverLogin);
+		this.receivers = receivers;
 		this.messageBody = messageBody;
 		this.type = type;
 	}
