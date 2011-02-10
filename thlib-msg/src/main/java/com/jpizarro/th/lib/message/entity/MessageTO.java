@@ -8,8 +8,8 @@ import com.thoughtworks.xstream.annotations.XStreamAlias;
 @XStreamAlias("message")
 public class MessageTO implements Serializable{
 	private long messageId;
-	private long senderLogin;
-	private long receiverLogin;
+	private long sender;
+//	private long receiverLogin;
 	Set<UserTO> receivers;
 	private String messageBody;
 	private int type;
@@ -30,10 +30,10 @@ public class MessageTO implements Serializable{
 //		this.messageBody = message.getMessageBody();	
 //	}
 	
-	public MessageTO(long senderLogin, Set<UserTO> receivers, 
+	public MessageTO(long sender, Set<UserTO> receivers, 
 			String messageBody, int type) {
 		super();
-		this.setSenderLogin(senderLogin);
+		this.setSender(sender);
 //		this.setReceiverLogin(receiverLogin);
 		this.receivers = receivers;
 		this.messageBody = messageBody;
@@ -42,31 +42,31 @@ public class MessageTO implements Serializable{
 	public MessageTO() {
 		super();
 	}
-	public MessageTO(long messageId, long senderLogin, long receiverLogin,
-			String messageBody, int type) {
-		super();
-		this.messageId = messageId;
-		this.setSenderLogin(senderLogin);
-		this.setReceiverLogin(receiverLogin);
-		this.messageBody = messageBody;
-		this.type = type;
-	}
-	public MessageTO(long messageId, String senderLogin, String receiverLogin,
-			String messageBody, int type) {
-		super();
-		this.messageId = messageId;
-		this.setSenderLogin(Long.parseLong(senderLogin));
-		this.setReceiverLogin(Long.parseLong(receiverLogin));
-		this.messageBody = messageBody;
-		this.type = type;
-	}
-	public MessageTO(String senderLogin, String receiverLogin, String messageBody,
-			int type) {
-		this.setSenderLogin(Long.parseLong(senderLogin));
-		this.setReceiverLogin(Long.parseLong(receiverLogin));
-		this.messageBody = messageBody;
-		this.type = type;
-	}
+//	public MessageTO(long messageId, long senderLogin, long receiverLogin,
+//			String messageBody, int type) {
+//		super();
+//		this.messageId = messageId;
+//		this.setSenderLogin(senderLogin);
+//		this.setReceiverLogin(receiverLogin);
+//		this.messageBody = messageBody;
+//		this.type = type;
+//	}
+//	public MessageTO(long messageId, String senderLogin, String receiverLogin,
+//			String messageBody, int type) {
+//		super();
+//		this.messageId = messageId;
+//		this.setSenderLogin(Long.parseLong(senderLogin));
+//		this.setReceiverLogin(Long.parseLong(receiverLogin));
+//		this.messageBody = messageBody;
+//		this.type = type;
+//	}
+//	public MessageTO(String senderLogin, String receiverLogin, String messageBody,
+//			int type) {
+//		this.setSenderLogin(Long.parseLong(senderLogin));
+//		this.setReceiverLogin(Long.parseLong(receiverLogin));
+//		this.messageBody = messageBody;
+//		this.type = type;
+//	}
 	public long getMessageId() {
 		return messageId;
 	}
@@ -85,17 +85,10 @@ public class MessageTO implements Serializable{
 	public void setType(int type) {
 		this.type = type;
 	}
-	public void setSenderLogin(long senderLogin) {
-		this.senderLogin = senderLogin;
+	public void setSender(long sender) {
+		this.sender = sender;
 	}
-	public long getSenderLogin() {
-		return senderLogin;
-	}
-	public void setReceiverLogin(long receiverLogin) {
-		this.receiverLogin = receiverLogin;
-	}
-	public long getReceiverLogin() {
-		return receiverLogin;
-	}
-	
+	public long getSender() {
+		return sender;
+	}	
 }

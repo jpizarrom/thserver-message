@@ -22,6 +22,7 @@ public class MessageUtils {
 				receivers,
 				msg.getMessageBody(),
 				msg.getType());
+		to.setMessageId(msg.getMessageId());
 		
 		return to;
 	}
