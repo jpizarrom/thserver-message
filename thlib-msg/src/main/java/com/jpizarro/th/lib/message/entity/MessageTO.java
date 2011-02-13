@@ -1,17 +1,25 @@
 package com.jpizarro.th.lib.message.entity;
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Set;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 
 @XStreamAlias("message")
 public class MessageTO implements Serializable{
+	public Set<UserTO> getReceivers() {
+		return receivers;
+	}
+	public void setReceivers(Set<UserTO> receivers) {
+		this.receivers = receivers;
+	}
 	private long messageId;
 	private long sender;
 //	private long receiverLogin;
 	Set<UserTO> receivers;
 	private String messageBody;
+	private boolean readed = false;
 	private int type;
 	
 //	public MessageTO(Message message) {
@@ -41,6 +49,7 @@ public class MessageTO implements Serializable{
 	}
 	public MessageTO() {
 		super();
+		receivers = new HashSet<UserTO>();
 	}
 //	public MessageTO(long messageId, long senderLogin, long receiverLogin,
 //			String messageBody, int type) {
@@ -90,5 +99,11 @@ public class MessageTO implements Serializable{
 	}
 	public long getSender() {
 		return sender;
+	}
+	public void setReaded(boolean readed) {
+		this.readed = readed;
+	}
+	public boolean isReaded() {
+		return readed;
 	}	
 }

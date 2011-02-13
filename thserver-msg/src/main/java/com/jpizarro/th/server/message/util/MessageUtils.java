@@ -26,4 +26,20 @@ public class MessageUtils {
 		
 		return to;
 	}
+	public static Message messageFromMessageTO(MessageTO to) {
+		Message msg = new Message();
+		
+		msg.setMessageId(to.getMessageId());
+		msg.setMessageBody(to.getMessageBody());
+		msg.setReaded(to.isReaded());
+		msg.setType(to.getType());
+		
+		msg.setSender(new User(to.getSender()));
+		for(UserTO uto: to.getReceivers()){
+			msg.getReceivers().add(new User(uto.getUserId()));
+		}
+
+		return msg;
+		
+	}
 }

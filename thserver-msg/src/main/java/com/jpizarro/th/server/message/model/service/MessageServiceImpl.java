@@ -2,6 +2,7 @@ package com.jpizarro.th.server.message.model.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.jpizarro.th.lib.message.entity.MessageTO;
 import com.jpizarro.th.server.generic.model.persistence.util.exceptions.DuplicateInstanceException;
@@ -16,9 +17,11 @@ public class MessageServiceImpl implements MessageService {
 	private MessageAccessor messageAccessor;
 	
 	@Override
-	public void create(MessageTO entity) throws DuplicateInstanceException {
-		// TODO Auto-generated method stub
-		
+	@Transactional
+	public MessageTO create(MessageTO entity) throws DuplicateInstanceException {
+		Message msg = MessageUtils.messageFromMessageTO(entity);
+		messageAccessor.create(msg);
+		return MessageUtils.messageTOFromMessage(msg);
 	}
 
 	@Override
@@ -33,19 +36,21 @@ public class MessageServiceImpl implements MessageService {
 	@Override
 	public boolean exists(Long id) {
 		// TODO Auto-generated method stub
-		return false;
+		return messageAccessor.exists(id);
 	}
 
 	@Override
+	@Transactional
 	public MessageTO update(MessageTO entity) {
-		// TODO Auto-generated method stub
-		return null;
+		Message msg = MessageUtils.messageFromMessageTO(entity);
+		messageAccessor.update(msg);
+		return MessageUtils.messageTOFromMessage(msg);
 	}
 
 	@Override
+	@Transactional
 	public void remove(Long id) throws InstanceNotFoundException {
-		// TODO Auto-generated method stub
-		
+		messageAccessor.remove(id);
 	}
 
 }

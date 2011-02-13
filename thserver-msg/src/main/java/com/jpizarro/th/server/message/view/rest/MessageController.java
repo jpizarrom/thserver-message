@@ -50,24 +50,30 @@ public class MessageController implements GenericController<MessageTO, Long>{
 	}
 
 	@RequestMapping(method=RequestMethod.POST)
-	public ModelAndView addEntity(@RequestBody String body) {
-		// TODO Auto-generated method stub
+	@ResponseBody
+	public MessageTO addEntity(@RequestBody MessageTO body) {
+		MessageTO msg = null;
 		try {
-			MessageTO teamTO = new MessageTO();
-//			teamTO.setTeamId(16);
-//			teamTO.setName("dddd");
-			messageService.create( teamTO );
+			msg = messageService.create( body );
 		} catch (DuplicateInstanceException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return new ModelAndView(XML_VIEW_NAME, BindingResult.MODEL_KEY_PREFIX+"users", body);
+		return msg;
+//		return new ModelAndView(XML_VIEW_NAME, BindingResult.MODEL_KEY_PREFIX+"users", body);
 	}
 
 	@Override
 	@RequestMapping(value="/{id}", method=RequestMethod.PUT)
+	@ResponseBody
 	public MessageTO updateEntity(@PathVariable Long id, @RequestBody MessageTO entity) {
-		// TODO Auto-generated method stub
+		entity.setMessageId(id);
+		try {
+			return messageService.update(entity);
+		} catch (InstanceNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return null;
 	}
 
@@ -82,11 +88,5 @@ public class MessageController implements GenericController<MessageTO, Long>{
 			ret = false;
 		}
 		return new ModelAndView(XML_VIEW_NAME, BindingResult.MODEL_KEY_PREFIX+"team", ret);
-	}
-
-	@Override
-	public MessageTO addEntity(MessageTO body) {
-		// TODO Auto-generated method stub
-		return null;
 	}
 }
