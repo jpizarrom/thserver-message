@@ -66,6 +66,6 @@
   <property name="ignoreAcceptHeader" value="true" />
 </bean>
 
-<import resource="rest-client.xml"/>
+<!--<import resource="rest-client.xml"/>-->
 
 </beans>

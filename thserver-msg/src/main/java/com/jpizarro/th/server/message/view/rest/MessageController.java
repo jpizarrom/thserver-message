@@ -23,8 +23,7 @@ import com.jpizarro.th.server.message.model.service.MessageService;
 public class MessageController implements GenericController<MessageTO, Long>{
 	@Autowired
 	private MessageService messageService;
-	@Autowired
-	private RestClient restClient;
+
 	private String XML_VIEW_NAME = "xmlView";
 	
 	@RequestMapping(method=RequestMethod.GET, value="/{id}")
@@ -90,13 +89,4 @@ public class MessageController implements GenericController<MessageTO, Long>{
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
-	@RequestMapping(method=RequestMethod.GET, value="/{id}/test")
-	@ResponseBody
-	public MessageTO restTest(@PathVariable Long id) {
-		MessageTO to = null;
-		to = restClient.getEntity(id);
-		return to;
-	}
-
 }
