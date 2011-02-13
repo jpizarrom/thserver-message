@@ -23,6 +23,7 @@ public class MessageUtils {
 				msg.getMessageBody(),
 				msg.getType());
 		to.setMessageId(msg.getMessageId());
+		to.setReaded(msg.isReaded());
 		
 		return to;
 	}
@@ -33,11 +34,11 @@ public class MessageUtils {
 		msg.setMessageBody(to.getMessageBody());
 		msg.setReaded(to.isReaded());
 		msg.setType(to.getType());
-		
+
 		msg.setSender(new User(to.getSender()));
-		for(UserTO uto: to.getReceivers()){
-			msg.getReceivers().add(new User(uto.getUserId()));
-		}
+//		for(UserTO uto: to.getReceivers()){
+//			msg.getReceivers().add(new User(uto.getUserId()));
+//		}
 
 		return msg;
 		

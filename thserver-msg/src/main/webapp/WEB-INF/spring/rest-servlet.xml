@@ -25,6 +25,12 @@
 <!--	            <entry key="user" value="com.jpizarro.th.lib.user.entity.UserTO" />-->
 <!--	        </map>-->
 <!--	    </property>-->
+			<property name="annotatedClasses">
+				<list>
+					<value>com.jpizarro.th.lib.message.entity.UserTO</value>
+					<value>com.jpizarro.th.lib.message.entity.MessageTO</value>
+				</list>
+			</property>
 	</bean>
 
 	<bean id="xmlView"

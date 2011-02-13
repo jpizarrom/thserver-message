@@ -64,6 +64,9 @@
 	<bean id="messageAccessor"
 		class="com.jpizarro.th.server.message.model.persistence.accessor.MessageAccessorHibernate"
 		p:sessionFactory-ref="sessionFactory" />
+	<bean id="userAccessor"
+		class="com.jpizarro.th.server.message.model.persistence.accessor.UserAccessorHibernate"
+		p:sessionFactory-ref="sessionFactory" />
 
 <!--	 <bean id="filterChainProxy" class="org.springframework.security.web.FilterChainProxy"> -->
 <!--		<security:filter-chain-map path-type="ant">-->
