@@ -382,8 +382,23 @@
 		<!--<dependency> <groupId>org.apache.axis2</groupId> <artifactId>axis2-json</artifactId> 
 			<version>${axis2.version}</version> </dependency> -->
 
+  <!-- ========================================================== -->
+<!-- 		<dependency> -->
+<!-- 		    <groupId>com.jpizarro.th</groupId> -->
+<!-- 		    <artifactId>thlib-generic</artifactId> -->
+<!--             <version>1.0-SNAPSHOT</version> -->
+<!-- 		</dependency> -->
+		<dependency>
+		    <groupId>com.jpizarro.th</groupId>
+		    <artifactId>thlib-server-generic</artifactId>
+            <version>1.0-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+		    <groupId>com.jpizarro.th</groupId>
+		    <artifactId>thlib-message</artifactId>
+            <version>1.0-SNAPSHOT</version>
+		</dependency>
 	</dependencies>
-
 	<!-- ========================================================== -->
 
 	<build>
@@ -487,7 +502,7 @@
 				</configuration>
 			</plugin>
 
-			<plugin>
+			<!-- <plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>build-helper-maven-plugin</artifactId>
 				<executions>
@@ -499,17 +514,14 @@
 						</goals>
 						<configuration>
 							<sources>
-								<!--<source>thlib</source> -->
 								<source>../../generic/thlib-generic/src/main/java/</source>
 								<source>../../generic/thlib-server-generic/src/main/java/</source>
-								
-<!--                                <source>../../user/thlib-user/src/main/java/</source>-->
                                 <source>../../msg/thlib-msg/src/main/java/</source>
 							</sources>
 						</configuration>
 					</execution>
 				</executions>
-			</plugin>
+			</plugin>-->
 
 
 			<!-- <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-shade-plugin</artifactId> 
