@@ -4,22 +4,27 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.simpleframework.xml.Element;
+import org.simpleframework.xml.Root;
+
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 
 @XStreamAlias("message")
+@Root
 public class MessageTO implements Serializable{
-	public Set<UserTO> getReceivers() {
-		return receivers;
-	}
-	public void setReceivers(Set<UserTO> receivers) {
-		this.receivers = receivers;
-	}
+
+	@Element(required=false)
 	private long messageId;
+	@Element(required=false)
 	private long sender;
 //	private long receiverLogin;
+	@Element(required=false)
 	Set<UserTO> receivers;
+	@Element(required=false)
 	private String messageBody;
+	@Element(required=false)
 	private boolean readed = false;
+	@Element(required=false)
 	private int type;
 	
 //	public MessageTO(Message message) {
@@ -105,5 +110,11 @@ public class MessageTO implements Serializable{
 	}
 	public boolean isReaded() {
 		return readed;
-	}	
+	}
+	public Set<UserTO> getReceivers() {
+		return receivers;
+	}
+	public void setReceivers(Set<UserTO> receivers) {
+		this.receivers = receivers;
+	}
 }

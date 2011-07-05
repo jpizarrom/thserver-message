@@ -76,6 +76,21 @@
 <!--		    <artifactId>xpp3</artifactId>-->
 <!--		    <version>1.1.4c</version>-->
 <!--		</dependency>-->
+		<dependency>
+			<groupId>org.simpleframework</groupId>
+			<artifactId>simple-xml</artifactId>
+			<version>${simple-version}</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>stax</artifactId>
+					<groupId>stax</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>stax-api</artifactId>
+					<groupId>stax</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
   <!-- ========================================================== -->
 		<dependency>
 		    <groupId>com.jpizarro.th</groupId>
@@ -190,5 +205,6 @@
 		<hibernate.version>3.5.3-Final</hibernate.version>
 		<org.slf4j.version>1.6.1</org.slf4j.version>
 		<axis2.version>1.5.1</axis2.version>
+		<simple-version>2.4.1</simple-version>
 	</properties>
 	</project>
