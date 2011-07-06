@@ -11,7 +11,7 @@ import org.simpleframework.xml.Root;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 
 @XStreamAlias("message")
-@Root
+@Root(name="message")
 public class MessageTO implements Serializable{
 
 	@Element(required=false)
