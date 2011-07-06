@@ -8,14 +8,14 @@ import org.simpleframework.xml.Root;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 
 @XStreamAlias("user")
-//@Root
+@Root(name="user")
 public class UserTO implements Serializable{
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 7534948413604544467L;
-//	@Element(required=false)
+	@Element(required=false)
 	private long userId;
 
 	public UserTO() {
