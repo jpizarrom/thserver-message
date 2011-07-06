@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.simpleframework.xml.Element;
+import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.Root;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
@@ -18,7 +19,7 @@ public class MessageTO implements Serializable{
 	@Element(required=false)
 	private long sender;
 //	private long receiverLogin;
-	@Element(required=false)
+	@ElementList(required=false)
 	Set<UserTO> receivers;
 	@Element(required=false)
 	private String messageBody;
